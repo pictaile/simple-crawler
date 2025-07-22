@@ -5,6 +5,7 @@ const URL = 'https://sensebank.ua';
 const forbiddenKeywords = ['Еквайринг', 'USD', 'EUR'];
 
 (async () => {
+    //запуск без графики
     const browser = await puppeteer.launch({ headless: 'new' });
     const page = await browser.newPage();
     await page.goto(URL, { waitUntil: 'networkidle2' });
@@ -20,9 +21,9 @@ const forbiddenKeywords = ['Еквайринг', 'USD', 'EUR'];
     );
 
     if (found.length > 0) {
-        console.log(`⚠️ Знайдено: ${found.join(', ')}`);
+        console.log(`Знайдено: ${found.join(', ')}`);
     } else {
-        console.log(`✅ Слова не знайдено`);
+        console.log(`Слова не знайдено`);
     }
 
     await browser.close();
