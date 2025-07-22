@@ -12,18 +12,18 @@ const forbiddenKeywords = ['Еквайринг', 'USD', 'EUR'];
 
     const content = await page.content();
 
-    // Зберігаємо HTML
+    // сохраняем HTML
     fs.writeFileSync('snapshot.html', content);
 
-    // Перевірка на заборонені слова
+    // проверка слов
     const found = forbiddenKeywords.filter(keyword =>
         content.toLowerCase().includes(keyword.toLowerCase())
     );
 
     if (found.length > 0) {
-        console.log(`Знайдено: ${found.join(', ')}`);
+        console.log(`Найдено: ${found.join(', ')}`);
     } else {
-        console.log(`Слова не знайдено`);
+        console.log(`Слова не найдено`);
     }
 
     await browser.close();
